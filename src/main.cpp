@@ -11,7 +11,7 @@ int main( )
   namespace tdi = testing_di;
 
   const auto injector = di::make_injector(
-      di::bind< tdi::InputPolicy >( ).to< tdi::input_policies::keyboard >( ) );
+      di::bind< class tdi::InputPolicy >( ).to< tdi::input_policies::keyboard >( ) );
 
   auto processor = injector.create< tdi::processor >( );
 

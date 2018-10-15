@@ -11,7 +11,7 @@ if NOT "%1"=="" (
 
 set script_dir=%~dp0
 
-set app=%script_dir%Multi\%build_type%\skel.exe
+set app=%script_dir%Multi\%build_type%\di.exe
 
 if NOT EXIST %app% (
 	set error_message=calling build

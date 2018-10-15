@@ -1,5 +1,6 @@
 namespace testing_di
 {
+  class InputPolicy;
 
   template< class TInput = class InputPolicy >
   class processor

@@ -18,7 +18,7 @@ set script_dir=%~dp0
 
 set build_dir=%script_dir%Multi\
 
-set solution_file_name=skel.sln
+set solution_file_name=di.sln
 
 if NOT EXIST %build_dir%%solution_file_name% (
 	set error_message=calling generate
