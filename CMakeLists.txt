@@ -31,11 +31,15 @@ conan_basic_setup( TARGETS )
 # Setting target:
 
 set ( sources
+  ${CMAKE_SOURCE_DIR}/src/processor.cpp
   ${CMAKE_SOURCE_DIR}/src/main.cpp )
 
 add_executable( ${ProjectName} ${sources} )
 
 target_include_directories( ${ProjectName} PRIVATE ${CMAKE_SOURCE_DIR}/include )
+
+target_include_directories( ${ProjectName} PRIVATE
+  ${CMAKE_SOURCE_DIR}/submodules/di/include )
 
 target_link_libraries( ${ProjectName} CONAN_PKG::boost )
 
