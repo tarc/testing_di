@@ -31,6 +31,7 @@ conan_basic_setup( TARGETS )
 # Setting target:
 
 set ( sources
+  ${CMAKE_SOURCE_DIR}/src/input_policies/keyboard.cpp
   ${CMAKE_SOURCE_DIR}/src/processor.cpp
   ${CMAKE_SOURCE_DIR}/src/main.cpp )
 

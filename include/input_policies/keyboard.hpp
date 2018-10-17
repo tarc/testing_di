@@ -3,10 +3,7 @@ namespace testing_di::input_policies {
   class keyboard
   {
     public:
-      char get( ) const
-      {
-        return 'a';
-      }
+      char get( ) const;
   };
 
 } // namespace testing_di::input_policies

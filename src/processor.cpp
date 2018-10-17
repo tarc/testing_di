@@ -1,3 +1,5 @@
+#include <cstdio>
+
 #include "processor.hpp"
 
 namespace testing_di {
@@ -6,13 +8,12 @@ namespace testing_di {
   processor< TInput >::processor( TInput & input )
     : m_inputer( input )
   {
-    input.get( );
   }
 
   template< class TInput >
   void processor< TInput >::run( )
   {
-    m_inputer.get( );
+    while ( m_inputer.get( ) != EOF );
   }
 
 } // namespace testing_di
