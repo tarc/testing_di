@@ -28,19 +28,19 @@ endif( MULTI_CONFIG )
 conan_basic_setup( TARGETS )
 
 
-# Setting target:
+# Setting targets:
 
-set ( sources
-  ${CMAKE_SOURCE_DIR}/src/input_policies/keyboard.cpp
+add_executable( ${ProjectName}
+  ${CMAKE_SOURCE_DIR}/src/main.cpp
   ${CMAKE_SOURCE_DIR}/src/processor.cpp
-  ${CMAKE_SOURCE_DIR}/src/main.cpp )
+  ${CMAKE_SOURCE_DIR}/policies/keyboard_input/keyboard.cpp )
 
-add_executable( ${ProjectName} ${sources} )
+target_include_directories( ${ProjectName}
+  PRIVATE ${CMAKE_SOURCE_DIR}/include
+  PRIVATE ${CMAKE_SOURCE_DIR}/policies/keyboard_input )
 
-target_include_directories( ${ProjectName} PRIVATE ${CMAKE_SOURCE_DIR}/include )
-
-target_include_directories( ${ProjectName} PRIVATE
-  ${CMAKE_SOURCE_DIR}/submodules/di/include )
+target_include_directories( ${ProjectName}
+  PRIVATE ${CMAKE_SOURCE_DIR}/submodules/di/include )
 
 target_link_libraries( ${ProjectName} CONAN_PKG::boost )
 
