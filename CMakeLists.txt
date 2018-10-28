@@ -45,6 +45,23 @@ target_include_directories( ${ProjectName}
 target_link_libraries( ${ProjectName} CONAN_PKG::boost )
 
 
+# Test
+
+add_executable( test_processor_01
+  ${CMAKE_SOURCE_DIR}/test/test_processor_01.cpp
+  ${CMAKE_SOURCE_DIR}/src/processor.cpp
+  ${CMAKE_SOURCE_DIR}/test/policies/fixed_string_input/keyboard.cpp )
+
+target_include_directories( test_processor_01
+  PRIVATE ${CMAKE_SOURCE_DIR}/include
+  PRIVATE ${CMAKE_SOURCE_DIR}/test/policies/fixed_string_input )
+
+target_include_directories( test_processor_01
+  PRIVATE ${CMAKE_SOURCE_DIR}/submodules/di/include )
+
+target_link_libraries( ${ProjectName} CONAN_PKG::boost )
+
+
 # Silence some MSVC warnings:
 
 if ( MSVC )
@@ -59,3 +76,6 @@ endif ( MSVC )
 
 set_property ( TARGET ${ProjectName} PROPERTY CXX_STANDARD 17 )
 set_property ( TARGET ${ProjectName} PROPERTY CXX_STANDARD_REQUIRED ON )
+
+set_property ( TARGET test_processor_01 PROPERTY CXX_STANDARD 17 )
+set_property ( TARGET test_processor_01 PROPERTY CXX_STANDARD_REQUIRED ON )

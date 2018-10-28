@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <iostream>
 
 #include "processor.hpp"
 
@@ -13,7 +14,12 @@ namespace testing_di {
   template< class TInput >
   void processor< TInput >::run( )
   {
-    while ( m_inputer.get( ) != EOF );
+    auto c = m_inputer.get( );
+    while ( c != EOF )
+    {
+      std::cout << c;
+      c = m_inputer.get( );
+    }
   }
 
 } // namespace testing_di
