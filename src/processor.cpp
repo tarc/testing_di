@@ -25,6 +25,6 @@ namespace testing_di {
 } // namespace testing_di
 
 
-#include "input_policies/keyboard.hpp"
+#include "input_policy.hpp"
 
-template class testing_di::processor< testing_di::input_policies::keyboard >;
+template class testing_di::processor< testing_di::input_policy >;

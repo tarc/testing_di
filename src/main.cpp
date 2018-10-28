@@ -2,8 +2,8 @@
 
 #include <boost/di.hpp>
 
+#include "input_policy.hpp"
 #include "processor.hpp"
-#include "input_policies/keyboard.hpp"
 
 int main( )
 {
@@ -11,7 +11,7 @@ int main( )
   using namespace testing_di;
 
   const auto injector = di::make_injector(
-      di::bind< class InputPolicy >( ).to< input_policies::keyboard >( ) );
+      di::bind< class InputPolicy >( ).to< input_policy >( ) );
 
   auto processor = injector.create< testing_di::processor >( );
 
