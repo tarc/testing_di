@@ -1,4 +1,4 @@
-#include "input_policies/keyboard.hpp"
+#include "keyboard.hpp"
 
 namespace testing_di {
 

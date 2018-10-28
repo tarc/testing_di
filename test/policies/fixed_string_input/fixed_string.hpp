@@ -2,10 +2,10 @@
 
 namespace testing_di::input_policies {
 
-  class keyboard
+  class fixed_string
   {
     public:
-      keyboard( std::string );
+      fixed_string( std::string );
       char get( );
 
     private:

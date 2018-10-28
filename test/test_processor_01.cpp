@@ -10,7 +10,7 @@ int main( )
   namespace di = boost::di;
   using namespace testing_di;
 
-  input_policies::keyboard k( { 'a' , 'b' , 'c' , 'd' , 'e' , EOF } );
+  input_policy k( { 'a' , 'b' , 'c' , 'd' , 'e' , EOF } );
 
   const auto injector = di::make_injector(
       di::bind< class InputPolicy >( ).to< input_policy >( k ) );

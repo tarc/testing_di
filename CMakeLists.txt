@@ -50,7 +50,7 @@ target_link_libraries( ${ProjectName} CONAN_PKG::boost )
 add_executable( test_processor_01
   ${CMAKE_SOURCE_DIR}/test/test_processor_01.cpp
   ${CMAKE_SOURCE_DIR}/src/processor.cpp
-  ${CMAKE_SOURCE_DIR}/test/policies/fixed_string_input/keyboard.cpp )
+  ${CMAKE_SOURCE_DIR}/test/policies/fixed_string_input/fixed_string.cpp )
 
 target_include_directories( test_processor_01
   PRIVATE ${CMAKE_SOURCE_DIR}/include
