@@ -24,4 +24,3 @@ namespace testing_di::input_policies {
   }
 
 } // namespace testing_di::input_policies
-

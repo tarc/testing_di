@@ -2,7 +2,7 @@
 
 #include <boost/di.hpp>
 
-#include "input_policy.hpp"
+#include "fixed_string.hpp"
 #include "processor.hpp"
 
 int main( )
@@ -10,10 +10,10 @@ int main( )
   namespace di = boost::di;
   using namespace testing_di;
 
-  input_policy k( { 'a' , 'b' , 'c' , 'd' , 'e' , EOF } );
+  input_policies::fixed_string k( { 'a' , 'b' , 'c' , 'd' , 'e' , EOF } );
 
   const auto injector = di::make_injector(
-      di::bind< class InputPolicy >( ).to< input_policy >( k ) );
+      di::bind< class InputPolicy >( ).to< input_policies::fixed_string >( k ) );
 
   auto processor = injector.create< testing_di::processor >( );
 
@@ -21,4 +21,3 @@ int main( )
 
   return EXIT_SUCCESS;
 }
-
