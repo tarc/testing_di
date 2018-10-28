@@ -10,12 +10,10 @@ int main( )
   namespace di = boost::di;
   using namespace testing_di;
 
-  std::string input = "abcdef";
-  input += EOF;
+  input_policies::keyboard k( { 'a' , 'b' , 'c' , 'd' , 'e' , EOF } );
 
   const auto injector = di::make_injector(
-      di::bind< class InputPolicy >( ).to< input_policies::keyboard >( ) ,
-      di::bind< std::string >( ).to( input ) );
+      di::bind< class InputPolicy >( ).to< input_policies::keyboard >( k ) );
 
   auto processor = injector.create< testing_di::processor >( );
 
