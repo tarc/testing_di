@@ -2,7 +2,7 @@
 
 #include <boost/di.hpp>
 
-#include "fixed_string.hpp"
+#include "fixed_string_input.hpp"
 #include "output_policy.hpp"
 #include "processor.hpp"
 
