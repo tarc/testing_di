@@ -3,7 +3,7 @@
 #include <boost/di.hpp>
 
 #include "fixed_string_input.hpp"
-#include "output_policy.hpp"
+#include "fill_buffer_output.hpp"
 #include "processor.hpp"
 
 int main( )
@@ -17,7 +17,7 @@ int main( )
 
   const auto injector = di::make_injector(
       di::bind< class InputPolicy >( ).to< input_policies::fixed_string >( k ) ,
-      di::bind< class OutputPolicy >( ).to< output_policies::keyboard >( ) );
+      di::bind< class OutputPolicy >( ).to< output_policies::fill_buffer >( ) );
 
   auto processor = injector.create< testing_di::processor >( );
 

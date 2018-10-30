@@ -53,12 +53,12 @@ add_executable( test_processor
   ${CMAKE_SOURCE_DIR}/test/test_processor.cpp
   ${CMAKE_SOURCE_DIR}/src/processor.cpp
   ${CMAKE_SOURCE_DIR}/test/policies/fixed_string_input/fixed_string_input.cpp
-  ${CMAKE_SOURCE_DIR}/policies/keyboard_output/keyboard_output.cpp )
+  ${CMAKE_SOURCE_DIR}/test/policies/fill_buffer_output/fill_buffer_output.cpp )
 
 target_include_directories( test_processor
   PRIVATE ${CMAKE_SOURCE_DIR}/include
   PRIVATE ${CMAKE_SOURCE_DIR}/test/policies/fixed_string_input
-  PRIVATE ${CMAKE_SOURCE_DIR}/policies/keyboard_output )
+  PRIVATE ${CMAKE_SOURCE_DIR}/test/policies/fill_buffer_output )
 
 
 target_include_directories( test_processor
