@@ -33,7 +33,7 @@ conan_basic_setup( TARGETS )
 add_executable( ${ProjectName}
   ${CMAKE_SOURCE_DIR}/src/main.cpp
   ${CMAKE_SOURCE_DIR}/src/processor.cpp
-  ${CMAKE_SOURCE_DIR}/policies/keyboard_input/keyboard.cpp
+  ${CMAKE_SOURCE_DIR}/policies/keyboard_input/keyboard_input.cpp
   ${CMAKE_SOURCE_DIR}/policies/keyboard_output/keyboard_output.cpp )
 
 target_include_directories( ${ProjectName}
