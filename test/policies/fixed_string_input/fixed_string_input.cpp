@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <stdexcept>
 
-#include "fixed_string.hpp"
+#include "fixed_string_input.hpp"
 
 
 namespace testing_di::input_policies {
