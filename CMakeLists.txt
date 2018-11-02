@@ -28,43 +28,54 @@ endif( MULTI_CONFIG )
 conan_basic_setup( TARGETS )
 
 
-# Setting targets:
+# Injected processors
 
-add_executable( ${ProjectName}
-  ${CMAKE_SOURCE_DIR}/src/main.cpp
+add_library( keyboard_processor
   ${CMAKE_SOURCE_DIR}/src/processor.cpp
   ${CMAKE_SOURCE_DIR}/policies/keyboard_input/keyboard_input.cpp
   ${CMAKE_SOURCE_DIR}/policies/keyboard_output/keyboard_output.cpp )
 
-target_include_directories( ${ProjectName}
+target_include_directories( keyboard_processor
   PRIVATE ${CMAKE_SOURCE_DIR}/include
-  PRIVATE ${CMAKE_SOURCE_DIR}/policies/keyboard_input
-  PRIVATE ${CMAKE_SOURCE_DIR}/policies/keyboard_output )
-
-target_include_directories( ${ProjectName}
-  PRIVATE ${CMAKE_SOURCE_DIR}/submodules/di/include )
-
-target_link_libraries( ${ProjectName} CONAN_PKG::boost )
+  PUBLIC ${CMAKE_SOURCE_DIR}/policies/keyboard_input
+  PUBLIC ${CMAKE_SOURCE_DIR}/policies/keyboard_output )
 
 
-# Test
-
-add_executable( test_processor
-  ${CMAKE_SOURCE_DIR}/test/test_processor.cpp
+add_library( fixed_string_input_fill_buffer_output_processor
   ${CMAKE_SOURCE_DIR}/src/processor.cpp
   ${CMAKE_SOURCE_DIR}/test/policies/fixed_string_input/fixed_string_input.cpp
   ${CMAKE_SOURCE_DIR}/test/policies/fill_buffer_output/fill_buffer_output.cpp )
 
-target_include_directories( test_processor
+target_include_directories( fixed_string_input_fill_buffer_output_processor
   PRIVATE ${CMAKE_SOURCE_DIR}/include
-  PRIVATE ${CMAKE_SOURCE_DIR}/test/policies/fixed_string_input
-  PRIVATE ${CMAKE_SOURCE_DIR}/test/policies/fill_buffer_output )
+  PUBLIC ${CMAKE_SOURCE_DIR}/test/policies/fixed_string_input
+  PUBLIC ${CMAKE_SOURCE_DIR}/test/policies/fill_buffer_output )
 
 
-target_include_directories( test_processor
+# Setting targets:
+
+add_executable( ${ProjectName} ${CMAKE_SOURCE_DIR}/src/main.cpp )
+
+target_include_directories( ${ProjectName}
+  PRIVATE ${CMAKE_SOURCE_DIR}/include
   PRIVATE ${CMAKE_SOURCE_DIR}/submodules/di/include )
 
-target_link_libraries( ${ProjectName} CONAN_PKG::boost )
+target_link_libraries( ${ProjectName}
+  CONAN_PKG::boost
+  keyboard_processor )
+
+
+# Test
+
+add_executable( test_processor ${CMAKE_SOURCE_DIR}/test/test_processor.cpp )
+
+target_include_directories( test_processor
+  PRIVATE ${CMAKE_SOURCE_DIR}/include
+  PRIVATE ${CMAKE_SOURCE_DIR}/submodules/di/include )
+
+target_link_libraries( test_processor
+  CONAN_PKG::boost
+  fixed_string_input_fill_buffer_output_processor )
 
 
 # Silence some MSVC warnings:
@@ -84,3 +95,11 @@ set_property ( TARGET ${ProjectName} PROPERTY CXX_STANDARD_REQUIRED ON )
 
 set_property ( TARGET test_processor PROPERTY CXX_STANDARD 17 )
 set_property ( TARGET test_processor PROPERTY CXX_STANDARD_REQUIRED ON )
+
+set_property ( TARGET fixed_string_input_fill_buffer_output_processor
+  PROPERTY CXX_STANDARD 17 )
+set_property ( TARGET fixed_string_input_fill_buffer_output_processor
+  PROPERTY CXX_STANDARD_REQUIRED ON )
+
+set_property ( TARGET keyboard_processor PROPERTY CXX_STANDARD 17 )
+set_property ( TARGET keyboard_processor PROPERTY CXX_STANDARD_REQUIRED ON )
